@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Avatar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="learning"></div>
+  <div id="avatar"></div>
+
+  <div id="assesment">
+    <h1>Virtual Learning Guide</h1>
+    <p>Welcome to my programming class! We'll explore C++, HTML, CSS, and SQL. <br><br>
+      From C++'s versatility to HTML/CSS web development and SQL database management, we'll cover a range of languages and their applications. <br><br>
+      Let's dive in and unlock the power of coding together! <br><br></p>
+
+    <div class="buttons">
+      <div id="c++" class="button" onclick="getResponse('Response from Button 1', this)">C++</div>
+      <div id="HTML" class="button" onclick="getResponse('Response from Button 2', this)">HTML</div>
+      <div id="CSS" class="button" onclick="getResponse('Response from Button 3', this)">CSS</div>
+      <div id="SQL" class="button" onclick="getResponse('Response from Button 4', this)">SQL</div>
+    </div>
+  </div>
+  
+  <div id="assessment-container">
+    <div id="assessmentForm"></div>
+    <div id="assesmentsubmit" class="button"> Submit Assesment</div>
+    <div id="score"></div>
+    <div id="conversation"></div>
+  </div>
+  <div id="controls">
+      <div id="speak" type="button" value="Ask me">Ask Me</div>
+      <div id="avatarButton1" class="button">Avatar 1</div>
+      <div id="avatarButton2" class="button">Avatar 2</div>
+  </div>
+  <div id="take-assesment">Take Assesment</div>
+    <div id="loading"></div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js",
+          "three/examples/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+          "dompurify": "https://cdn.jsdelivr.net/npm/dompurify@3.0.6/+esm",
+          "marked": "https://cdn.jsdelivr.net/npm/marked@11.2.0/+esm",
+          "talkinghead": "https://cdn.jsdelivr.net/gh/met4citizen/TalkingHead@1.1/modules/talkinghead.mjs",
+          "axios": "https://cdn.jsdelivr.net/npm/axios@latest/dist/axios.min.js"
+        }
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="index.js"></script>
+    
+</body>
+</html>

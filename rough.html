@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+
+    body{
+        display: block;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0;
+        background-image: url('bg_img1.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    h1{
+        position: relative;
+        top: 300px;
+        left: 100px;
+        color:#ccc;
+    }
+
+    h3{
+        position: relative;
+        top: 300px;
+        left: 200px;
+        color:#ccc;
+    }
+
+    #login-container{
+        position: relative;
+        top: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    form {
+        color: #ccc;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        width: 300px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form label,
+    form input {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    form button:hover {
+        background-color: #0056b3;
+    }
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    
+    const host = 'http://127.0.0.1:8000';
+
+    function apikeys(user,tts_key,openai_key) {
+
+        var data = {
+            user: user,
+            tts_key: tts_key,
+            openai_key: openai_key
+        };
+        var jsonData = JSON.stringify(data);
+        console.log(user,tts_key,openai_key);
+        fetch(host + '/apikeys', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: jsonData
+        })
+        .then(response => response.json())
+        .then(response => {
+            return response;
+        })
+        
+//        return axios.post(host + '/apikeys', { user,tts_key,openai_key });
+    }
+
+    function submitForm() {
+        // Gather input values
+        var username = document.getElementById("username").value;
+        var ttsKey = document.getElementById("apikey_1").value;
+        var openaiKey = document.getElementById("apikey_2").value;
+        console.log(username,ttsKey,openaiKey)
+        // Send data to the API
+        apikeys(username,ttsKey,openaiKey)        
+        .then(response => {
+            // Handle API response if needed
+            let { success } = response.data;
+            console.log('==>>',success)
+            if (success) {
+                // If response is successful, navigate to the next page
+                window.location.href = 'index.html'; // Change 'success_page.html' to the URL of the success page
+            } else {
+                // If response is not successful, display error warning
+                alert('Error: ' + 'Please enter valid credentials');
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+
+</script>
+
+</head>
+
+<body>
+    <h1>Virtual Learning Guide</h1>
+    <h3>Login Page</h3>
+    <div id="login-container">
+        <form>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="apikey_1">TTS Key :</label><br>
+            <input type="text" id="apikey_1" name="apikey_1"><br>
+            <label for="apikey_2">OPENAI Key :</label><br>
+            <input type="text" id="apikey_2" name="apikey_2"><br><br>
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>
