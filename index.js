@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async function (e) {
     // function initializeTalkingHead() {
     head = new TalkingHead(nodeAvatar, {
         ttsEndpoint: "https://eu-texttospeech.googleapis.com/v1beta1/text:synthesize",
-        ttsApikey: "AIzaSyDvbbelIv8AaTF9Dkvo2RVVouSIJjmaeSs", // <- Change this
+        ttsApikey: "YOUR_GOOGLE_TTS_API_KEY", // <- Change this
         cameraView: "upper",
         cameraRotateEnable:'true',
         avatarMood: 'neutral',
